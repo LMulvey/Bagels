@@ -43,6 +43,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Validate dates
 gem 'validates_timeliness', '~> 4.0'
 
+gem 'active_model_serializers'
 
 # Rspec for testing
 group :development, :test do

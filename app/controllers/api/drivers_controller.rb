@@ -9,6 +9,11 @@ module Api
                 render json: Driver.all
             end
 
+            def show
+                @driver = Driver.find(params[:id])
+                render json: @driver
+            end
+
             def create
             end
 

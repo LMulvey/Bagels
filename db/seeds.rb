@@ -18,6 +18,7 @@ require 'faker'
         ticket.events.create!({
             status: "active",
             event_type: "delivery",
+            description: Faker::SiliconValley.quote,
             address: Faker::Address.street_address
         })
     end

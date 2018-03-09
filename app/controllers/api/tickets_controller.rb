@@ -5,6 +5,11 @@ module Api
                 render json: Ticket.all
             end
 
+            def show
+                @ticket = Ticket.find(params[:id])
+                render json: @ticket
+            end
+
             def create
             end
         
