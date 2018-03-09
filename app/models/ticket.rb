@@ -6,7 +6,7 @@ class Ticket < ActiveRecord::Base
   enum status: { active: 0, completed: 1 }
 
   validates :description, presence: true
-  validates_datetime :start_time
-  validates_datetime :stop_time
+  validates_datetime :start_time, :allow_blank => true
+  validates_datetime :stop_time, :allow_blank => true
 
 end

@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20180308150009) do
     t.string "description"
     t.string "address"
     t.integer "status", null: false
-    t.integer "type", null: false
+    t.integer "event_type", null: false
     t.integer "measurement"
     t.string "measurement_type"
     t.datetime "start_time"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20180308150009) do
     t.integer "driver_id"
     t.integer "status", null: false
     t.string "description"
-    t.string "event_sequence", array: true
     t.datetime "start_time"
     t.datetime "stop_time"
     t.datetime "created_at", null: false

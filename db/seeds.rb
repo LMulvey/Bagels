@@ -1,7 +1,25 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
+require 'faker'
+
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Let's seed the database
+(1..10).each do
+    driver = Driver.create!({
+        first_name: Faker::Name.first_name,
+        last_name:  Faker::Name.last_name
+    })
+    (1..5).each do
+        ticket = driver.tickets.create!({
+            status: "active",
+            description: Faker::SiliconValley.motto
+        })
+
+        ticket.events.create!({
+            status: "active",
+            event_type: "delivery",
+            address: Faker::Address.street_address
+        })
+    end
+end
+

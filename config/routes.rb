@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   
   namespace :api do
-    resources :drivers, only: [:index]
-    resources :tickets, only: [:index]
-    resources :events, only: [:index]
+    # TODO: Restrict certain routes
+    resources :drivers
+    resources :tickets
+    resources :events
   end
 
 end
