@@ -1,4 +1,4 @@
-# Bagel
+# Bagels
 > A ticket creation and management platform for delivery drivers.
 
 #### I'm a pro, just show me the docs
