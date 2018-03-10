@@ -10,6 +10,6 @@ class Event < ActiveRecord::Base
   validates_datetime :start_time, :allow_blank => true
   validates_datetime :stop_time, :allow_blank => true
   validates_time :stop_time, :after => :start_time, :allow_blank => true
-  validates_time :start_time, :before => :start_time, :allow_blank => true
+  validates_time :start_time, :before => :stop_time, :allow_blank => true
   
 end

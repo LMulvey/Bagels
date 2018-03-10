@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       resource :tickets
     end
     resources :tickets
-    resources :events
+    resources :events do
+      resource :ticket
+    end
   end
 
 end
