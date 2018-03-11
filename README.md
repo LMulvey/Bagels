@@ -1,6 +1,8 @@
 # Bagels
 > A ticket creation and management platform for delivery drivers.
 
+*Formerly known as Bagelr*
+
 #### I'm a pro, just show me the docs
 * [API Documentation (courtesy of Postman)](https://documenter.getpostman.com/view/3489528/bagels/RVnVELGx)
 
