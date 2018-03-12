@@ -1,16 +1,27 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
+import { Header, Content } from "./components/partials";
+import { withRouter, Switch, BrowserRouter as Router, Route } from "react-router-dom";
+
+import Home from './components/Home';
+import Driver from './components/Driver';
 
 class App extends Component {
-	render() {
+	componentWillUnmount() {
+		document.body.classList.toggle('home', false);
+    }
+
+    render() {
+        document.body.classList.toggle('home', true);
 		return (
 			<Container>
-				<Row>
-					<Col xs={12} className="text-center">
-            
-						<h1 className="brand">YUVAL'S</h1>
-					</Col>
-				</Row>
+				<Header />
+				<Router>
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route path="/driver" component={Driver} />
+					</Switch>
+				</Router>
 			</Container>
 		);
 	}
