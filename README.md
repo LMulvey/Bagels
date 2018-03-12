@@ -33,7 +33,12 @@ To get started with the _**client**_, `cd` into the `client` folder located in t
 cd client
 ```
 
-To start, open up the `package.json` file inside the `client` folder. Near the bottom you'll see a line that looks like this:
+First, we'll install all our dependencies for `create-react-app` by running this command while still inside the `client` folder:
+```sh
+npm install
+```
+
+Next, open up the `package.json` file inside the `client` folder. Near the bottom you'll see a line that looks like this:
 ```javascript
 "proxy": "http://localhost:3001"
 ```

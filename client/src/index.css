@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import 'normalize.css';
+@import 'typography.css';
+
 
 body {
   color: #FEF0E3;
@@ -20,10 +23,9 @@ body {
   transition: 1s all;
 }
 
-
 .brand {
   text-align: center;
-  font-size: 5.4em;
+  font-size: 4em;
   transform: skew(-2deg, -4deg);
   background-color: #f24153;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);  
@@ -43,6 +45,10 @@ body {
   font-size: 0.95em;
 }
 
+.driver-card {
+  margin-bottom: 50px;
+}
+
 .content {
   color: #444;
   background: url('./contentBg.svg'), rgb(235, 235, 235);
@@ -51,5 +57,22 @@ body {
   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);  
   border-radius: 8px;
   margin-top: 100px;
+  transition: 0.2s all;
+}
+
+.content.driver:hover {
+  background: url('./contentBg.svg'), rgb(136, 175, 133);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4);  
+  transform: skew(-1.4deg, 0deg);
+}
+
+.content.dispatcher:hover {
+  background: url('./contentBg.svg'), rgb(211, 192, 111);
+  box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4);  
+  transform: skew(-1.4deg, 0deg);
+}
+
+.content > i {
+  font-size: 32px;
 }
 
