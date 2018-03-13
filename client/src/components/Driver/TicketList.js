@@ -14,7 +14,6 @@ export default class TicketList extends Component {
 	render() {
 		const { first_name, last_name } = this.props.selectedDriver;
 		let renderTickets = this.props.tickets.map(ticket => {
-			console.log(ticket);
 			return (
 				<ListGroupItem 
 					key={Math.random()}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Container, Row, Col } from "reactstrap";
-import { Header, Content } from "./components/partials";
-import { withRouter, Switch, BrowserRouter as Router, Route } from "react-router-dom";
+import { Container } from "reactstrap";
+import { Header } from "./components/partials";
+import { Switch, BrowserRouter as Router, Route } from "react-router-dom";
 
 import Home from './components/Home';
 import Driver from './components/Driver';

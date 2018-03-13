@@ -19,8 +19,6 @@ puts 'Starting seed process...'
         })
         ticket.events.create!({
             event_type: "start",
-            description: Faker::SiliconValley.quote,
-            address: Faker::Address.street_address
         })
         ticket.events.create!({
             event_type: "delivery",
@@ -34,8 +32,6 @@ puts 'Starting seed process...'
         })
         ticket.events.create!({
             event_type: "stop",
-            description: Faker::SiliconValley.quote,
-            address: Faker::Address.street_address
         })
     end
 end

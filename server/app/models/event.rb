@@ -4,7 +4,6 @@ class Event < ActiveRecord::Base
   enum event_type: { start: 0, pickup: 1, delivery: 2, stop: 3 }
   
   validates :event_type, presence: true
-  validates :address, presence: true
   validates_datetime :start_time, :allow_blank => true
   
 end

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Button, Badge, Container } from "reactstrap";
+import { Row, Col, Button, Container } from "reactstrap";
 import API from "../../store/API";
 import DriverList from "./DriverList";
 import TicketList from "./TicketList";
@@ -19,13 +19,14 @@ class Driver extends Component {
 
 	componentDidMount() {
 		if (this.state.drivers.length === 0) {
-			API.fetch(`drivers`).then(drivers => this.setState({ drivers }));
+			API.get(`drivers`).then(drivers => this.setState({ drivers }));
 		}
 	}
 
-	componentDidUpdate() {
-		if (this.state.selectedDriver && this.state.tickets.length === 0) {
-			API.fetch(`drivers/${this.state.selectedDriver.id}/tickets`).then(
+	componentDidUpdate(prevProps, prevState) {
+        let { selectedDriver } = this.state;
+		if (selectedDriver && (selectedDriver !== prevState.selectedDriver))  {
+			API.get(`drivers/${this.state.selectedDriver.id}/tickets`).then(
 				tickets => this.setState({ tickets })
 			);
         }
@@ -41,7 +42,41 @@ class Driver extends Component {
     
     selectTicket(ticket) {
 		this.setState({ selectedTicket: ticket });
-	}
+    }
+    
+    handleEventComplete(e) {
+        let type = e.target.id;
+        let data = { event: { start_time: new Date().toLocaleString() } };
+
+        let selectedTicket = this.state.selectedTicket;
+        let this_event_id = this.state.selectedTicket.events
+            .filter(item => item.event_type === type)[0].id;
+        let start_id = this.state.selectedTicket.events
+            .filter(item => item.event_type === 'start')[0].id;
+        let stop_id = this.state.selectedTicket.events
+            .filter(item => item.event_type === 'stop')[0].id;
+
+        console.log('hey', this_event_id)
+
+        let post_urls = [];
+
+        switch(type) {
+            case 'pickup':
+                post_urls.push(`events/${this_event_id}`);
+                post_urls.push(`events/${start_id}`);
+                break;
+            case 'delivery':
+                post_urls.push(`events/${this_event_id}`);
+                post_urls.push(`events/${stop_id}`);
+                break;
+            default:
+                break;
+        }
+
+        API.put(post_urls[0], data);
+        API.put(post_urls[1], data)
+        .then(this.setState({ selectedTicket: selectedTicket}))
+    }
 
 	render() {
 		document.body.classList.toggle("driver", true);
@@ -65,7 +100,7 @@ class Driver extends Component {
                                 color="primary"
                                 size="lg"
                                 className="float-right"
-                                onClick={() => this.props.selectDriver(false)}>
+                                onClick={() => this.props.history.push("/")}>
                                 Back
                             </Button>
                         </Col>
@@ -91,6 +126,7 @@ class Driver extends Component {
                                 selectTicket={this.selectTicket.bind(this)}
                                 ticket={this.state.selectedTicket}
                                 selectedDriver={this.state.selectedDriver}
+                                handleEventComplete={this.handleEventComplete.bind(this)}
                             />
                         )}
 					</Col>

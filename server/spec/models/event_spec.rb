@@ -7,7 +7,6 @@ RSpec.describe Event, :type => :model do
   end
 
   context 'model validations' do
-    it { is_expected.to validate_presence_of :address }
     it { is_expected.to validate_presence_of :event_type }
     it { is_expected.to validates_datetime :start_time }
     it { should belong_to(:ticket) }

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Row, Col, Button, Badge } from "reactstrap";
+import React from "react";
+import { Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 
 const Home = () => {

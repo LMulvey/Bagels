@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {  Card, CardDeck, CardText, CardBody,
-    CardTitle, CardSubtitle, Button } from 'reactstrap';
+import {  Card, CardDeck, CardBody,
+    CardTitle, CardSubtitle } from 'reactstrap';
 
 class DriverList extends Component {
     render() {
