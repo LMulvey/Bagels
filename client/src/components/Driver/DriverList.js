@@ -13,7 +13,7 @@ class DriverList extends Component {
                     <Card className="text-center">
                         <CardBody>
                             <i className="fas fa-user fa-2x"></i>
-                            <CardTitle>{driver.first_name} {driver.last_name}</CardTitle>
+                            <CardTitle>{driver.first_name} {driver.last_name.charAt(0)}</CardTitle>
                             <CardSubtitle>Driver for Yuval's Bagels</CardSubtitle>
                         </CardBody>
                     </Card>
