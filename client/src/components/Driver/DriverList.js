@@ -8,7 +8,7 @@ class DriverList extends Component {
             return(
                 <div 
                     className="driver-card" 
-                    onClick={() => this.props.selectDriver(driver.id)}
+                    onClick={() => this.props.selectDriver(driver)}
                     key={Math.random()} >
                     <Card className="text-center">
                         <CardBody>

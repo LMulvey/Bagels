@@ -11,31 +11,31 @@ class Driver extends Component {
         this.state = {
             drivers: [],
             tickets: [],
-            selectedDriver: null
+            selectedDriver: false
         }
     }
 
-    componentWillMount() {
-        let type = (this.state.selectedDriver) 
-            ? `drivers/${this.state.selectedDriver}/tickets`
-            : `drivers`;
-
-        if(type === 'drivers') {
-            API.fetch(type)
+    componentDidMount() {
+        if(this.state.drivers.length === 0) {
+            API.fetch(`drivers`)
             .then(drivers => this.setState({ drivers }))
-        } else {
-            API.fetch(type)
+        }
+}
+
+    componentDidUpdate() {
+        console.log(this.state.selectedDriver);
+        if(this.state.selectedDriver && this.state.tickets.length === 0) {
+            API.fetch(`drivers/${this.state.selectedDriver.id}/tickets`)
             .then(tickets => this.setState({ tickets }))
         }
-        
     }
 
     componentWillUnmount() {
         document.body.classList.toggle('driver', false);
     }
 
-    selectDriver(id) {
-        this.setState({ selectedDriver: id })
+    selectDriver(driver) {
+        this.setState({ selectedDriver: driver })
     }
 
     render() {
@@ -49,7 +49,10 @@ class Driver extends Component {
                     <DriverList 
                         selectDriver={this.selectDriver.bind(this)} 
                         drivers={this.state.drivers} /> }
-                    <TicketList tickets={this.state.tickets} />
+                    {this.state.selectedDriver &&
+                    <TicketList 
+                        tickets={this.state.tickets}
+                        selectedDriver={this.state.selectedDriver} /> }
 
                 </Col>
             </Row>

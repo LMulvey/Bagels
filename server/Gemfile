@@ -45,6 +45,9 @@ gem 'validates_timeliness', '~> 4.0'
 
 gem 'active_model_serializers'
 
+# Twilio for SMS capability
+gem 'twilio-ruby'
+
 # Rspec for testing
 group :development, :test do
 

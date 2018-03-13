@@ -11,8 +11,8 @@ test:
   encoding: unicode
   database: bagels_test
   pool: 5
-  username: test
-  password: test
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASS'] %>
 
 # production:
 #   adapter: postgresql

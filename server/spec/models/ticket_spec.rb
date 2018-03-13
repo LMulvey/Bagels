@@ -10,7 +10,9 @@ RSpec.describe Ticket, :type => :model do
     it { is_expected.to validate_presence_of :description }
     it { is_expected.to validate_presence_of :status }
     it { is_expected.to validates_datetime :start_time }
-    it { is_expected.to validates_datetime :stop_time }
+    it { is_expected.to validates_datetime :completed_time }
+    it { should belong_to(:driver) }
+    it { should have_many(:events) }
   end
 
   context 'model enums' do

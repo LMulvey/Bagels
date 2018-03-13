@@ -20,7 +20,7 @@ module Api
             end
 
             def create
-                @ticket = Ticket.new(create_params)
+                @ticket = Ticket.new(mutate_params)
                 @ticket[:status] = "active" if !@ticket[:status]
                 
                 if @ticket.save
@@ -37,11 +37,11 @@ module Api
                     render json: generate_response(record: @ticket, type: :error, message: 'Could not find Ticket. Check ID.') 
                 else
                     # If we're inputting a stop time and change status to completed if so.
-                    if create_params.has_key?(:stop_time) && @ticket[:start_time]
+                    if mutate_params.has_key?(:completed_time)
                         @ticket[:status] = "completed"
                     end
 
-                    if @ticket.update(create_params)
+                    if @ticket.update(mutate_params)
                         @result = :success
                     else
                         @result = :error
@@ -66,9 +66,9 @@ module Api
             end
         
         private
-            def create_params
+            def mutate_params
                 params.require(:ticket)
-                .permit(:driver_id, :status, :start_time, :stop_time, :description)
+                .permit(:driver_id, :status, :start_time, :completed_time, :description)
             end
     end
 end

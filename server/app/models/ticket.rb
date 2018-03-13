@@ -7,8 +7,7 @@ class Ticket < ActiveRecord::Base
 
   validates :description, presence: true
   validates_datetime :start_time, :allow_blank => true
-  validates_datetime :stop_time, :allow_blank => true
-  validates_time :stop_time, :after => :start_time, :allow_blank => true
-  validates_time :start_time, :before => :stop_time, :allow_blank => true
- 
+  validates_datetime :completed_time, :allow_blank => true
+  validates_datetime :completed_time, :after => :start_time, :allow_blank => true
+  validates_datetime :start_time, :before => :completed_time, :allow_blank => true
 end

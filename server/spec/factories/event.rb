@@ -7,10 +7,8 @@ FactoryBot.define do
         measurement 25
         measurement_type "bagels"
         created_at { 2.days.ago }
-        status { ["active", "completed"].sample }
         event_type { ["start", "stop", "delivery", "pickup"].sample }
         start_time { 2.hours.ago }
-        stop_time { 1.hour.ago }
     end
 
 end

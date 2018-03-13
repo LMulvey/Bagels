@@ -24,12 +24,10 @@ ActiveRecord::Schema.define(version: 20180308150009) do
     t.integer "ticket_id"
     t.string "description"
     t.string "address"
-    t.integer "status", null: false
     t.integer "event_type", null: false
     t.integer "measurement"
     t.string "measurement_type"
     t.datetime "start_time"
-    t.datetime "stop_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["ticket_id"], name: "index_events_on_ticket_id"
@@ -40,7 +38,7 @@ ActiveRecord::Schema.define(version: 20180308150009) do
     t.integer "status", null: false
     t.string "description"
     t.datetime "start_time"
-    t.datetime "stop_time"
+    t.datetime "completed_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["driver_id"], name: "index_tickets_on_driver_id"
